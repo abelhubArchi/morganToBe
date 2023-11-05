@@ -14,7 +14,7 @@ fs.readFile('./datos.json', 'utf-8', (error, data)=>{
     apiKey: datos.llave,
   });
 
-  if (datos.identificacion == 2) {
+  if (datos.identificacion == 1) {
     async function consulta(pregunta) {
       const response = await openai.chat.completions.create({
         model: "gpt-4",
