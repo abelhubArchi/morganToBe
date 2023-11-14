@@ -6,8 +6,8 @@ import fs from 'fs';
 
 
 
-
-fs.readFile('./datos.json', 'utf-8', (error, data)=>{
+//fs.readFile('./datos.json', 'utf-8', (error, data)=>{
+fs.readFile('datos.json', 'utf-8', (error, data)=>{
   const datos = JSON.parse(data)
 
    const openai = new OpenAI({
@@ -17,7 +17,7 @@ fs.readFile('./datos.json', 'utf-8', (error, data)=>{
   if (datos.identificacion == 1) {
     async function consulta(pregunta) {
       const response = await openai.chat.completions.create({
-        model: "gpt-4",
+        model: "gpt-4-1106-preview",
         messages: [
           {"role": "system", "content": `Responderas estas preguntas de 
           este examen de derecho de forma
@@ -56,7 +56,7 @@ fs.readFile('./datos.json', 'utf-8', (error, data)=>{
     // Verifica el portapapeles cada segundo
     setInterval(checkClipboard, 500);
     
-    console.log('La aplicación está en ejecución en segundo plano... Copia las preguntas y el sistema te enviara una respuesta por notificacion. :)');
+    console.log('La aplicación está en ejecución en segundo plano... Copia las preguntas y el sistema te enviara una respuesta por notificacion.');
     
   } else{
     console.log('Codigo de usuario incorrecto. Ingrese un codigo valido');
